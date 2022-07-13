@@ -1,10 +1,16 @@
 body {
-    color: #fff;
+    color: black;
+    font-family: 'IBM Plex Sans Condensed', sans-serif;
+}
+
+p {
+    font-family: 'IBM Plex Sans', sans-serif;;
 }
 
 .container {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 
 .header {
@@ -12,15 +18,32 @@ body {
     justify-content: space-between;
     align-items: center;
     height: 50px;
-
-    background-color: rgb(20, 127, 220);
+    border-radius: 25px;
+    margin-bottom: 20px;
+    padding: 0 20px;
+    color: #fff;
+    background-color: #fff;
+    box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.25);
+    border: 1px solid transparent;
 }
 
-.chart {
+.logo {
+    font-weight: bolder;
+    font-size: larger;
+    color: #3988ff;
+    padding: 8px;
+}
+
+
+.chart-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 300px;
     width: 300px;
-    margin-top: 10px;
+    padding: 4px;
     border-radius: 15px;
-    background-color: rgb(20 127 220 / 55%);
-    border: 1px solid black;
+    
+    box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.25);
+    border: 1px solid transparent;
 }
