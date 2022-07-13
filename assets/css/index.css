@@ -1,0 +1,26 @@
+body {
+    color: #fff;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+
+    background-color: rgb(20, 127, 220);
+}
+
+.chart {
+    height: 300px;
+    width: 300px;
+    margin-top: 10px;
+    border-radius: 15px;
+    background-color: rgb(20 127 220 / 55%);
+    border: 1px solid black;
+}
