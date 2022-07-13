@@ -13,37 +13,57 @@ p {
     align-items: center;
 }
 
+header > i {
+    color: #fff;
+}
+
 .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 50px;
-    border-radius: 25px;
-    margin-bottom: 20px;
+    height: 60px;
+    border-radius: 30px;
+    margin: 20px;
     padding: 0 20px;
-    color: #fff;
+    color: #3988ff;
     background-color: #fff;
     box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.25);
     border: 1px solid transparent;
 }
 
+
 .logo {
     font-weight: bolder;
-    font-size: larger;
+    font-size: x-large;
     color: #3988ff;
     padding: 8px;
 }
 
+.navigation {
+    display: block;
+}
+
+#burger-menu {
+    border-radius: 10px;
+    margin: 8px;
+}
 
 .chart-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 300px;
-    width: 300px;
-    padding: 4px;
+    height: 320px;
+    width: 320px;
+    padding: 10px;
     border-radius: 15px;
     
     box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.25);
     border: 1px solid transparent;
+}
+
+
+@media screen and (max-width: 768px) {
+    .navigation{
+        display: none;
+    }
 }

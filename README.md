@@ -87,4 +87,6 @@ This kind of data is used to create candlestick charts, specifically used to car
 
 [Box shadows](https://www.youtube.com/watch?v=Yon4l3MUBGY)
 
+[Dropdown burger menu](https://www.youtube.com/watch?v=pVpW0SPmN7k)
+
 [binance API playlist](https://www.youtube.com/playlist?list=PLvzuUVysUFOuB1kJQ3S2G-nB7_nHhD7Ay)
