@@ -89,6 +89,35 @@ header > i {
 }
 
 
+.footer {
+    position: absolute;
+    display: flex;
+    width: 100%;
+    background-color: #3988ff;
+    bottom: 0;
+    height: 60px;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.social-networks {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    margin: auto;
+}
+
+.social-networks>li {
+    display: inline;
+}
+
+.social-networks i {
+    font-size: 160%;
+    margin: 1%;
+    padding: 5%;
+    color: #fff;
+}
+
 @media screen and (max-width: 768px) {
     .navigation{
         display: none;
