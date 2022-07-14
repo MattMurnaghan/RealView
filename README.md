@@ -5,6 +5,7 @@ A tool for visualizing real-time financial data from different sources.
 * Learn how to display data using javascript libraries
 * Build a functional website to be able to display more than three cryptocurrency live prices on different time scales set by the user.
 * Change the display type (line charts vs candlestick charts)
+* Create a pie chart showing the price relationships between different currencies
 
 ## **Node package manager (npm)**
 I am planning on using npm to manage my dependencies and packages for this project. 

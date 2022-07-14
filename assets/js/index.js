@@ -303,7 +303,7 @@
 
 // Static Kline example 
 
-var chart = LightweightCharts.createChart(document.querySelector('#chart-container__main-chart'), {
+const chart = LightweightCharts.createChart(document.querySelector('#chart-container__main-chart'), {
 	width: 300,
   height: 300,
 	layout: {
@@ -329,7 +329,7 @@ var chart = LightweightCharts.createChart(document.querySelector('#chart-contain
 	},
 });
 
-var candleSeries = chart.addCandlestickSeries({
+const candleSeries = chart.addCandlestickSeries({
   upColor: 'rgba(57, 136, 255, 1)',
   downColor: 'rgba(255, 255, 255, 1)',
   borderDownColor: 'rgba(57, 136, 255, 1)',
@@ -498,4 +498,27 @@ const open_coin_pairs = () => {
 // Open burger menu for mobile display
 const open_burger = () => {
 	console.log('open burger')
+};
+
+// Open websocket to binance API
+// TODO add input parameter coin-pair to append to websocket
+
+const connect_to_binance_socket = () => {
+	const socket = new WebSocket('wss://stream.binance.com:9443/ws/btcusdt@kline_5m');
+	console.log(socket);
+
+	socket.onmessage = function (event) {
+		console.log(event.data)
+	};
+
+	return socket;
+};
+
+socket = WebSocket('wss://stream.binance.com:9443/ws/newstuff');
+
+// Close a websocket
+// TODO add parameter to pass in socket to close
+
+const close_binance_socket = (socket) => {
+	socket.close();
 };
