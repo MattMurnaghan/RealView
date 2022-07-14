@@ -32,6 +32,9 @@ header > i {
 }
 
 .header {
+    position: sticky;
+    top: 20px;
+    z-index: 3;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -117,9 +120,9 @@ header > i {
 /* Footer */
 
 .footer {
-    position: absolute;
+    position: sticky;
     display: flex;
-    width: 100%;
+    width: 100vw;
     background-color: #3988ff;
     bottom: 0;
     height: 60px;

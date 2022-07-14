@@ -494,3 +494,8 @@ candleSeries.setData([
 const open_coin_pairs = () => {
 	console.log('open_coin_pairs')
 };
+
+// Open burger menu for mobile display
+const open_burger = () => {
+	console.log('open burger')
+};
