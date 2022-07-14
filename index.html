@@ -33,7 +33,17 @@
     </header>
     <section id="main-chart" class="section">
         <div id="chart-container__main-chart" class="chart-container"></div>
-            <p>This is a test element</p>
+    </section>
+    <section id="select-market" class="select-market">
+
+        <div id="select-market__button-holder" class="button-holder">
+            <!-- on-click => change html of coin-pair and request data from the binance api to repopulate chart -->
+            <button type="button" id="select-market__button" class="btn btn-primary" onclick="open_coin_pairs()">
+                COIN PAIR
+            </button>
+            <div id="seclect-market__display-pair" class="coin-pair">
+                BTC/USDT
+            </div>
         </div>
     </section>
     <footer id="footer" class="footer">
