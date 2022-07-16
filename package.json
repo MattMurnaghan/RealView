@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "an app to display real time financial information",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "devStart"
   },
@@ -23,4 +24,5 @@
     "lightweight-charts": "^3.8.0",
     "wscat": "^5.2.0"
   }
+  
 }
