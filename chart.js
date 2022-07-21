@@ -1,7 +1,7 @@
-import { createChart } from './lightweight-charts';
-
-createChart(document.querySelector('#chart-container__main-chart'), {
-	width: 320, height: 320,
+// Static Kline example 
+const chart = LightweightCharts.createChart(document.querySelector('#chart-container__main-chart'), {
+	width: 300,
+  	height: 300,
 	layout: {
 		backgroundColor: '#fff',
 		textColor: 'rgba(57, 136, 255, 0.9)',
@@ -24,34 +24,6 @@ createChart(document.querySelector('#chart-container__main-chart'), {
 		borderColor: 'rgba(197, 203, 206, 0.8)',
 	},
 });
-
-// Static Kline example 
-
-// const chart = LightweightCharts.createChart(document.querySelector('#chart-container__main-chart'), {
-// 	width: 300,
-//   height: 300,
-// 	layout: {
-// 		backgroundColor: '#fff',
-// 		textColor: 'rgba(57, 136, 255, 0.9)',
-// 	},
-// 	grid: {
-// 		vertLines: {
-// 			color: 'rgba(197, 203, 206, 0.5)',
-// 		},
-// 		horzLines: {
-// 			color: 'rgba(197, 203, 206, 0.5)',
-// 		},
-// 	},
-// 	crosshair: {
-// 		mode: LightweightCharts.CrosshairMode.Normal,
-// 	},
-// 	rightPriceScale: {
-// 		borderColor: 'rgba(197, 203, 206, 0.8)',
-// 	},
-// 	timeScale: {
-// 		borderColor: 'rgba(197, 203, 206, 0.8)',
-// 	},
-// });
 
 const candleSeries = chart.addCandlestickSeries({
   upColor: 'rgba(57, 136, 255, 1)',
@@ -213,36 +185,3 @@ candleSeries.setData([
 	{ time: '2019-05-23', open: 188.45, high: 192.54, low: 186.27, close: 192.00 },
 	{ time: '2019-05-24', open: 192.54, high: 193.86, low: 190.41, close: 193.59 },
 ]);
-
-// Open coin pairs list to select from prespecified coin pairs and update chart data
-const open_coin_pairs = () => {
-	console.log('open_coin_pairs')
-};
-
-// Open burger menu for mobile display
-const open_burger = () => {
-	console.log('open burger')
-};
-
-// Open websocket to binance API
-// TODO add input parameter coin-pair to append to websocket
-
-const connect_to_binance_socket = () => {
-	const socket = new WebSocket('wss://stream.binance.com:9443/ws/btcusdt@kline_5m');
-	console.log(socket);
-
-	socket.onmessage = function (event) {
-		console.log(event.data)
-	};
-
-	return socket;
-};
-
-socket = WebSocket('wss://stream.binance.com:9443/ws/newstuff');
-
-// Close a websocket
-// TODO add parameter to pass in socket to close
-
-const close_binance_socket = (socket) => {
-	socket.close();
-};

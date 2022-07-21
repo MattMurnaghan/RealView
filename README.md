@@ -91,3 +91,11 @@ This kind of data is used to create candlestick charts, specifically used to car
 [Dropdown burger menu](https://www.youtube.com/watch?v=pVpW0SPmN7k)
 
 [binance API playlist](https://www.youtube.com/playlist?list=PLvzuUVysUFOuB1kJQ3S2G-nB7_nHhD7Ay)
+
+[JSON to JSON Schema converter](https://www.liquid-technologies.com/online-json-to-schema-converter)
+
+[parse csv files](https://bobbyhadz.com/blog/javascript-read-file-into-array#:~:text=Use%20the%20fs.,get%20an%20array%20of%20strings.)
+
+[loop through object in javascript](https://flexiple.com/loop-through-object-javascript/)
+
+[binance historical data](https://data.binance.vision/?prefix=data/spot/)

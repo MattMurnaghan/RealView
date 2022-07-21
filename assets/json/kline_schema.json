@@ -1,0 +1,89 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+      "e": {
+        "type": "string"
+      },
+      "E": {
+        "type": "integer"
+      },
+      "s": {
+        "type": "string"
+      },
+      "k": {
+        "type": "object",
+        "properties": {
+          "t": {
+            "type": "integer"
+          },
+          "T": {
+            "type": "integer"
+          },
+          "s": {
+            "type": "string"
+          },
+          "i": {
+            "type": "string"
+          },
+          "f": {
+            "type": "integer"
+          },
+          "L": {
+            "type": "integer"
+          },
+          "o": {
+            "type": "string"
+          },
+          "c": {
+            "type": "string"
+          },
+          "h": {
+            "type": "string"
+          },
+          "l": {
+            "type": "string"
+          },
+          "v": {
+            "type": "string"
+          },
+          "n": {
+            "type": "integer"
+          },
+          "x": {
+            "type": "boolean"
+          },
+          "q": {
+            "type": "string"
+          },
+          "V": {
+            "type": "string"
+          },
+          "Q": {
+            "type": "string"
+          },
+          "B": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "t",
+          "T",
+          "i",
+          "o",
+          "c",
+          "h",
+          "l",
+          "v",
+          "n",
+          "x"
+        ]
+      }
+    },
+    "required": [
+      "e",
+      "E",
+      "s",
+      "k"
+    ]
+  }
