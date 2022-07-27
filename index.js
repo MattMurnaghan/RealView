@@ -10,11 +10,12 @@ import { open_burger } from './assets/js/ui.js'
 // import statements for binance sockets
 import {connect_to_binance_socket} from './assets/js/binance_socket.js'
 import {close_binance_socket} from './assets/js/binance_socket.js'
+import {socketAddresses} from './assets/js/binance_socket.js'
 
 // import statements for apex charts
 import {kline} from './assets/js/apexCharts.js'
 import {trade} from './assets/js/apexCharts.js'
-import {socketAddresses} from './assets/js/binance_socket.js' 
+import {options} from './assets/js/apexCharts.js'
 
 document.querySelector('#burger-menu').addEventListener('click', open_burger);
 document.querySelector('#select-market__button').addEventListener('click', open_coin_pairs);
@@ -35,7 +36,7 @@ btc_socket.onmessage = function (event) {
     // console.log(btc_count++);
     // console.log(event.data)
     let obj = JSON.parse(event.data);
-    console.log(obj.s)
+    // console.log(obj.s)
     //  let btc = new trade()
 
 };
@@ -43,7 +44,7 @@ eth_socket.onmessage = function (event) {
     // console.log(btc_count++);
     // console.log(event.data)
     let obj = JSON.parse(event.data);
-    console.log(obj.s)
+    // console.log(obj.s)
     //  let btc = new trade()
 
 };
@@ -51,7 +52,7 @@ sol_socket.onmessage = function (event) {
     // console.log(btc_count++);
     // console.log(event.data)
     let obj = JSON.parse(event.data);
-    console.log(obj.s)
+    // console.log(obj.s)
     //  let btc = new trade()
 
 };
@@ -59,7 +60,7 @@ ada_socket.onmessage = function (event) {
     // console.log(btc_count++);
     // console.log(event.data)
     let obj = JSON.parse(event.data);
-    console.log(obj.s)
+    // console.log(obj.s)
     //  let btc = new trade()
 
 };
@@ -67,7 +68,7 @@ ltc_socket.onmessage = function (event) {
     // console.log(btc_count++);
     // console.log(event.data)
     let obj = JSON.parse(event.data);
-    console.log(obj.s)
+    // console.log(obj.s)
     //  let btc = new trade()
 
 };
@@ -75,7 +76,7 @@ dot_socket.onmessage = function (event) {
     // console.log(btc_count++);
     // console.log(event.data)
     let obj = JSON.parse(event.data);
-    console.log(obj.s)
+    // console.log(obj.s)
     //  let btc = new trade()
 
 };

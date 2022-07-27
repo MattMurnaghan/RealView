@@ -8,7 +8,6 @@ export let options = {
     dataLabels: {
         enabled: false
     }
-
   }
 
 //   let klineEx = {
