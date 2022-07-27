@@ -72,62 +72,31 @@ const klineObjFromCsv = (file) => {
   let klineObj = stringToKlineObj(klineStringArray);
   return klineObj;
 }
-  
-  
+
 let file = 'assets/csv/binance_data/1h/BTCUSDT-1h-2021-01.csv';
 let klineObj = klineObjFromCsv(file);
 console.log('kline obj = ', klineObj)
 
-// This function takes a directory as the argument and loops through the directory, reading each csv file and returning an 
-// array of kline objects for each file
-
-const getCandleStickData = (csvFiles) => {
-  let klines = [];
-
-  
+// asynchronous function that reads through the files in a directory and returns an array of the file names
+async function readFilesInDirectory(rootPath) {
+  try {
+    return await fsPromises.readdir(rootPath);
+  } catch (err) {
+    console.error('Error occured while reading directory!', err);
+  }
 }
 
-//! race condition is breaking this function
-// this function reads through a directory and returns an array of the directory item names
-const readFilesInDirectory = (rootPath) => {
-  console.log('start func')
-  let fileNames = [];
-  let i = 0;
-
-  readdir(rootPath, (err, files) => {
-    console.log('start readdir')
-    if (err)
-      console.log(err);
-    else {
-      console.log('start else')
-      console.log("\nCurrent directory filenames:");
-      files.forEach(file => {
-        fileNames[i] = file;
-        // console.log(file);
-        console.log(fileNames[i])
-        i++;
-      })
-    }
-    console.log('after readdir, filenames is ' + fileNames)
-    console.log('type is ' , typeof(fileNames))
-    console.log('end')
-    return fileNames;
-  })
-  //! race condition occruring here, this log is firing before readdir terminates
-  
-};
-  
-// console.log('result => ',readFilesInDirectory(rootPath));
-
-//? function is somehow not declared here?
-// readFilesInDirectory(rootPath)
-// .then((result) => {
-//   console.log('the result is ' + result)
-// })
-
 let rootPath = 'assets/csv/binance_data/1h';
+readFilesInDirectory(rootPath).then((result) => {
+  console.log(result)
+});
 
-//! asynchronous function, ask guido about making it synchronous
-let array = readFilesInDirectory(rootPath);
-
-console.log('test ', array)
+// This function takes a directory as the argument and loops through the directory, reading each csv file and returning an 
+// array of kline objects for each file
+const getCandleStickData = (pathToCsvFiles) => {
+  let klines = [];
+  //get file names
+  readFilesInDirectory(rootPath).then((result) => {
+    console.log(result)
+  });
+}

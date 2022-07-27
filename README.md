@@ -99,3 +99,9 @@ This kind of data is used to create candlestick charts, specifically used to car
 [loop through object in javascript](https://flexiple.com/loop-through-object-javascript/)
 
 [binance historical data](https://data.binance.vision/?prefix=data/spot/)
+
+[splitting strings by specific characters](https://www.w3schools.com/jsref/jsref_split.asp#:~:text=The%20split()%20method%20splits,string%20is%20split%20between%20words.)
+
+[declaring new javasscript objects](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working_with_Objects)
+
+[reading files asynchronously in JS](https://stackoverflow.com/questions/40593875/using-filesystem-in-node-js-with-async-await)
