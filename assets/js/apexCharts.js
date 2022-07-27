@@ -1,4 +1,4 @@
-let options = {
+export let options = {
 	chart: {
 	  type: 'donut'
 	},
@@ -8,12 +8,37 @@ let options = {
     dataLabels: {
         enabled: false
     }
-	
+
   }
 
-let apexChart = new ApexCharts(document.querySelector('#donut'), options)
-apexChart.render()
+//   let klineEx = {
+//     openTime: ' ',
+//     open: ' ',
+//     high: ' ',
+//     low: ' ',
+//     close: ' ',
+//     volume: ' ',
+//     closeTime: ' ',
+//     quoteAssetVolume: ' ',
+//     numberOfTrades: ' ',
+//     takerBuyAssetVolume: ' ',
+//     takerBuyQuoteAssetVolume: ' '
+// };
 
-// let test = new ApexCharts(document.querySelector('#doughnut'), options)
-// test.render()
-// console.log(test.render())
+  export class kline {
+    constructor(opentime, closetime, open, high, low, close){
+      this.opentime = opentime;
+      this.close.time = closetime;
+      this.open = open;
+      this.high = high;
+      this.low = low;
+      this.close = close;
+    }
+  }
+
+  export class trade {
+    constructor(time, price){
+      this.time = time;
+      this.price = price;
+    }
+  }

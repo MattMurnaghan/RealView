@@ -7,22 +7,13 @@
 // Open websocket to binance API
 // TODO add input parameter coin-pair to append to websocket
 
-const connect_to_binance_socket = () => {
-	const socket = new WebSocket('wss://stream.binance.com:9443/ws/btcusdt@kline_5m');
+// Use below line if connecting to a kline
+// 'wss://stream.binance.com:9443/ws/btcusdt@kline_5m'
+
+export const connect_to_binance_socket = (addr) => {
+	const socket = new WebSocket(addr);
+	console.log('socket opened')
 	console.log(socket);
-
-	socket.onmessage = function (event) {
-		// console.log(event.data)
-		// let time = event.data
-		// console.log(typeof(time))
-		// console.log(time)
-		// let timeObj = JSON.parse(time)
-		// console.log(JSON.parse(timeObj))
-
-		// let candlestick = {
-		// 	time:
-		// }
-	};
 
 	return socket;
 };
@@ -31,7 +22,16 @@ const connect_to_binance_socket = () => {
 // Close a websocket
 // TODO add parameter to pass in socket to close
 
-const close_binance_socket = (socket) => {
+export const close_binance_socket = (socket) => {
 	socket.close();
 };
+
+export let socketAddresses = {
+	btc: 'wss://stream.binance.com:9443/ws/btcusdt@trade',
+	eth: 'wss://stream.binance.com:9443/ws/ethusdt@trade',
+	sol: 'wss://stream.binance.com:9443/ws/solusdt@trade',
+	ltc: 'wss://stream.binance.com:9443/ws/ltcusdt@trade',
+	dot: 'wss://stream.binance.com:9443/ws/dotusdt@trade',
+	ada: 'wss://stream.binance.com:9443/ws/adausdt@trade'
+} 
 
