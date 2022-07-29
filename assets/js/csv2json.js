@@ -17,7 +17,7 @@ const syncReadFile = (filename) => {
 }
 
 // Converts a unixtimestamp to a date object,  can also be used to output a formatted string for just the time without the date
-const unixTimeStampToDateTime = (stamp) => {
+export const unixTimeStampToDateTime = (stamp) => {
   let date = new Date(stamp); 
   // let hours = date.getHours();      //  Hours part from the timestamp
   // let minutes = date.getMinutes();  //  minutes part from the timestamp
