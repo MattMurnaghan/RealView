@@ -21,15 +21,16 @@ export class Kline {
   // This class takes an address to a binance websocket as an argument and allows the data from the socket to be trimmed and managed 
   export class BinanceSocketManager{
 	// Takes an address to a binance websocket and instantiates storage for the socket itself and the pricedata from the socket 
-    constructor(addr){
+    constructor(addr, name){
 		this.socket_address = addr;
+		this.name = name;
 		this.socket = null;
-		this.price_data = null;
+		this.price_data = 'no data available yet';
 	}
 
 	// Connects the socket to the passed address
 	connect(){
-		console.log(this.socket_address)
+		console.log(this.socket_address);
 		this.socket = new WebSocket(this.socket_address);
 		console.log('socket opened');
 		console.log(this.socket);
@@ -42,10 +43,23 @@ export class Kline {
 
 	// initiates an onmessage event on the socket to constantly update price data
 	monitorSocket(){
+		let name = this.name;
 		this.socket.onmessage = function (event) {
-			this.price_data = trimPriceData(event.data)
-			console.log(this.price_data)
+			let trade_object = trimPriceData(event.data);
+			sessionStorage.setItem(name, JSON.stringify(trade_object));			
 		}
+	}
+
+	updatePriceData(payload){
+		this.price_data = payload;
+	}
+
+	get data(){
+		return this.price_data;
+	}
+
+	getName(){
+		return this.name;
 	}
 }
 
@@ -70,7 +84,7 @@ export let socket_addresses = {
 } 
 
 // Converts a unixtimestamp to a date object,  can also be used to output a formatted string for just the time without the date
-export const unixTimeStampToDateTime = (stamp) => {
+const unixTimeStampToDateTime = (stamp) => {
 	let date = new Date(stamp); 
 	return date;
   }

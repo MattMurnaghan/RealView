@@ -113,8 +113,63 @@ header > i {
     justify-content: space-between;
 }
 
+.select-trade-pair {
+    display: flex;
+    width: 320px;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 15px;
+    
+    box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.25);
+    border: 1px solid transparent;
+}
+
 #select-market__button {
     border-radius: 7.5px;
+}
+
+/* trade options section */
+.trade-options {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.trade-options__button {
+    min-width: 60px;
+    margin: 10px 10px;
+}
+
+#trade-options__btc{
+    background-color: #ffd966;
+    border-color: #ffd966;
+}
+
+#trade-options__eth{
+    background-color: #cf2a27;
+    border-color: #cf2a27;
+}
+
+#trade-options__ada{
+    background-color: #009e0f;
+    border-color: #009e0f;
+}
+
+#trade-options__dot{
+    background-color: #668cff;
+    border-color: #668cff;
+}
+
+#trade-options__ltc{
+    background-color: #27cccf;
+    border-color: #27cccf;
+}
+
+#trade-options__sol{
+    background-color: #9e008f;
+    border-color: #9e008f;
 }
 
 /* Footer */

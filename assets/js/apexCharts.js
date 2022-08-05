@@ -19,6 +19,13 @@ export class options {
   }
 };
 
+export class donut {
+  constructor(series){
+    this.series = null;
+  }
+
+}
+
 
 export let optionsTest = {
 	chart: {
@@ -32,6 +39,9 @@ export let optionsTest = {
   }
 }
 
-export function renderDonut(trade_data) {
-
+function updateDonut(){
+  // console.log('fire updateDonut');
+  // console.log(opt);
+  apexChart = new ApexCharts(document.querySelector('#donut'), opt);
+  apexChart.render();
 }
