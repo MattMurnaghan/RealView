@@ -10,7 +10,7 @@ import { openCoinPairs, openBurger } from './assets/js/ui.js';
 import { socket_addresses, BinanceSocketManager } from './assets/js/binance_socket.js';
 
 // import statements for apex charts
-import { options } from './assets/js/apexCharts.js';
+import { Options, Donut } from './assets/js/apexCharts.js';
 
 document.querySelector('#burger-menu').addEventListener('click', openBurger);
 document.querySelector('#select-market__button').addEventListener('click', openCoinPairs);
@@ -52,32 +52,51 @@ sol_socket.monitorSocket();
 console.log('start waiting');
 
 // donut chart
-let type = 'donut';
-let series = [ 0, 0, 0, 0, 0, 0];
+// let type = 'donut';
+// let series = [ 0, 0, 0, 0, 0, 0];
 let labels = ['BTC', 'ETH', 'ADA', 'DOT', 'LTC', 'SOL'];
-let enabled = false;
 
-let opt = new options(type, series, labels, enabled);
-let apexChart = new ApexCharts(document.querySelector('#donut'), opt);
-apexChart.render();
+let trade_donut = new Donut(labels);
 
-setInterval(() => {
-    let btc_object = JSON.parse(sessionStorage.getItem('btc'));
-    let eth_object = JSON.parse(sessionStorage.getItem('eth'));
-    let ada_object = JSON.parse(sessionStorage.getItem('ada'));
-    let dot_object = JSON.parse(sessionStorage.getItem('dot'));
-    let ltc_object = JSON.parse(sessionStorage.getItem('ltc'));
-    let sol_object = JSON.parse(sessionStorage.getItem('sol'));
-    
-    opt.series = [
-        parseFloat(btc_object.price)*0.01,
-        parseFloat(eth_object.price),
-        parseFloat(ada_object.price),
-        parseFloat(dot_object.price),
-        parseFloat(ltc_object.price),
-        parseFloat(sol_object.price)
-    ]
-}, 1000);
+trade_donut.updateSeries(); 
+// trade_donut.getLabels();
+trade_donut.renderDonut();
+
+// console.log('after toggle')
+// trade_donut.toggleLabels('BTC');
+
+// trade_donut.renderDonut();
+
+document.querySelector('#trade-options__btc').addEventListener('click', () => {
+    trade_donut.toggleLabels('BTC');
+    trade_donut.renderDonut();
+});
+
+document.querySelector('#trade-options__eth').addEventListener('click', () => {
+    trade_donut.toggleLabels('ETH');
+    trade_donut.renderDonut();
+});
+
+document.querySelector('#trade-options__ada').addEventListener('click', () => {
+    trade_donut.toggleLabels('ADA');
+    trade_donut.renderDonut();
+});
+
+document.querySelector('#trade-options__dot').addEventListener('click', () => {
+    trade_donut.toggleLabels('DOT');
+    trade_donut.renderDonut();
+});
+
+document.querySelector('#trade-options__ltc').addEventListener('click', () => {
+    trade_donut.toggleLabels('LTC');
+    trade_donut.renderDonut();
+});
+
+document.querySelector('#trade-options__sol').addEventListener('click', () => {
+    trade_donut.toggleLabels('SOL');
+    trade_donut.renderDonut();
+});
+
 
 // setInterval(() => {
 //     console.log(opt.series);
@@ -88,12 +107,7 @@ setInterval(() => {
 //     console.log(opt.series)
 // }, 3000)
 
-document.querySelector('#trade-options_btc').addEventListener('click', updateDonut);
 
 
 
-// const dataManager = new DataManager();
 
-
-// let opt = new options;
-// console.log(opt)

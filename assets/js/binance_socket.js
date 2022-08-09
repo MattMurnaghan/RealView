@@ -50,10 +50,6 @@ export class Kline {
 		}
 	}
 
-	updatePriceData(payload){
-		this.price_data = payload;
-	}
-
 	get data(){
 		return this.price_data;
 	}
