@@ -251,4 +251,4 @@ This kind of data is used to create candlestick charts, specifically used to car
 
 ## Acknowledgments
 ---
-I'd like to give a big thanks to my mentor Guido who advised me to refactor my code using classes instead of multiple exported functions. It simplified the process and is more in line with best practices .
+I'd like to give a big thanks to my mentor Guido who advised me to refactor my code using classes instead of multiple exported functions. It simplified the process and is more in line with best practices.
