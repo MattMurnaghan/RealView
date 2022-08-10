@@ -1,8 +1,6 @@
 // This is the only main file that will run within the script, it will import other function declartions
 // defined within the assets/js folder
 
-// console.log('start of index')
-
 // import statements for ui elements
 import { openCoinPairs, openBurger } from './assets/js/ui.js';
 
@@ -15,9 +13,6 @@ import { Donut } from './assets/js/apexCharts.js';
 document.querySelector('#burger-menu').addEventListener('click', openBurger);
 // document.querySelector('#select-market__button').addEventListener('click', openCoinPairs);
 
-
-console.log(socket_addresses);
-console.log(socket_addresses.btc);
 
 // Decalre instances of BinanceSocketManager for each websocket
 // The socket manager class stores the websocket address, the socket itself and the pricedata that is extracted from the 

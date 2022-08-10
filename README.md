@@ -16,6 +16,14 @@ This is a single-page site consisting of two main features:
 * K-Line or candlestick chart viewing
 * Donut chart presentation of live trade prices from Binance. 
 
+## Structure
+---
+I chose to go with a single-page structure to build the site like a web app. I wanted it to feel comfortable to use on mobile first, so I made sure to start from mobile and scale up to desktop.
+## Skeleton
+---
+The wireframes for the project are included [here](docs/wireframes/RealView.pdf)
+
+I deviated from the original design as the live data updates were more difficult to implement than I had originally thought. I decided that allowing the user to choose when the price was updated was a better option. I left the color as a neutral blue to suit the theme of the site as there were some contract issues with the other colors, and the apexCharts donut reassigned colors as coins were toggle so it didn't make sense to have any other colors clashing.
 ## User Goals
 ---
 This site is focused on demonstrating simple data manipulation techniques for those who already have an interest in cryptocurrency and finance. 
@@ -105,9 +113,55 @@ The list of node modules I used in this project is shown below:
 
 I didn't use many as the code was predominantly client side, however, I did make use of the fs libraries for parsing the CSV data that I retrieved from the Binance servers.
 
+## Validation
+---
+Both my HTML and CSS passed with no errors when using the W3Schools validation tools.
+
+|![html validation](docs/images/html_validation.png)|
+|:--:|
+| <strong>HTML validation</strong>|
+
+|![css validation](docs/images/css_validation.png)|
+|:--:|
+| <strong>CSS Validation</strong>|
+
+## Lighthouse 
+---
+Running lighthouse reports gave some very good insights and good results. 
+### Desktop
+Desktop results performed very well, all in the green with minimal blocking resources.
+
+|![desktop lighthouse report](docs/images/desktop_lighthouse_report.png)|
+|:--:|
+| <strong>Desktop Lighthouse report</strong>|
+
+Running the same tests on mobile put a bit too much strain on the page load. Using the apexcharts cdn link and google font connections slowed things down. I believe serving local storage and a remote server could improve these results significantly. 
+
+|![mobile lighthouse report](docs/images/mobile_lighthouse_report.png)|
+|:--:|
+| <strong>Mobile Lighthouse report</strong>|
+
+
+## Known Issues
+---
+After doing some more testing using the github pages feature, I noticed that sometimes the donut chart did not load in until it was refreshed. I suspect that this is due to the data not loading in fast enough, or a slow connection to the apexCharts server as I am accessing their library through a cdn. 
+
+|![intermittent page load issues](docs/images/data_loading_issue.png)|
+|:--:|
+| <strong>Intermittent page load issues for the live data feed.</strong>|
+
+A potential fix for this is to install the package locally and serve the resources from a local server. Another benefit to choosing this method is that an asynchronous loading animation could be employed until all the data had been received by the client and was ready to be rendered.
+
+## Further features to implement
+---
+I am hoping to add a contact page to the site, as well as more data rendering capabilities.
+
+I would like to try using the candlestick features from the apexCharts library, as I donut the animation style and interactivity of the donut chart to be very appealing and easy to use.
+
+The dropdown menu to present the user with other kline coin pairs has not been connected to a JS function to render it. I'm also hoping to run a server so that I can stream live kline data and retrieve historical data dynamically through the use of the Binance API.
 ## **The Binance API**
-I used the Binance API to connect to their official WebSocket stream. This allowed me to capture live data about the Binance marketplace.
-See the offical documentation [here](https://github.com/binance/binance-spot-api-docs/blob/master/web-socket-streams.md).
+I used the Binancewebsockets to connect to their official WebSocket stream. This allowed me to capture live data about the Binance marketplace.
+See the official documentation [here](https://github.com/binance/binance-spot-api-docs/blob/master/web-socket-streams.md)](https://github.com/binance/binance-spot-api-docs/blob/master/web-socket-streams.md).
 
 The main endpoint used to connect to the stream: 
 - wss://stream.binance.com:9443
@@ -192,3 +246,7 @@ This kind of data is used to create candlestick charts, specifically used to car
 [declaring new javasscript objects](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working_with_Objects)
 
 [reading files asynchronously in JS](https://stackoverflow.com/questions/40593875/using-filesystem-in-node-js-with-async-await)
+
+## Acknowledgments
+---
+I'd like to give a big thanks to my mentor Guido who advised me to refactor my code using classes instead of multiple exported functions. It simplified the process and is more in line with best practices .

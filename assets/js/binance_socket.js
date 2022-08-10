@@ -30,10 +30,7 @@ export class Kline {
 
 	// Connects the socket to the passed address
 	connect(){
-		console.log(this.socket_address);
 		this.socket = new WebSocket(this.socket_address);
-		console.log('socket opened');
-		console.log(this.socket);
 	};
 
 	// Closes the connection to the socket

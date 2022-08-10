@@ -51,13 +51,10 @@ export class Donut {
     this.disp_series = this.disp_series.filter(element => {
       return element !== null && element !== undefined;
     });
-    // console.log(this.disp_labels);
-    // console.log(this.disp_series);
   }
 
   // update the series of the donut object
   updateSeries() {
-    console.log('in update series');
     let obj;
     let labels = this.labels;
     this.show_values.fill(true);
@@ -72,8 +69,6 @@ export class Donut {
 
   // 
   getLabels() {
-    console.log('in getLabels')
-    console.log(this.labels);
     return this.labels;
   }
 
@@ -91,10 +86,6 @@ export class Donut {
 
   // Render the donut chart using the apexCharts library
   renderDonut() {
-    console.log('in render donut');
-
-    // console.log(opt)
-
     if (this.first_render) {
       let opt = new Options(this.chart, this.series, this.labels, this.data_labels);
       this.renderedChart = new ApexCharts(document.querySelector('#donut'), opt);
@@ -104,8 +95,6 @@ export class Donut {
       let opt = new Options(this.chart, this.disp_series, this.disp_labels, this.data_labels);
       this.renderedChart.updateOptions(opt);
     }
-    // console.log(this.series_index);
-    // console.log(this.series)
   }
 }
 
@@ -120,11 +109,4 @@ export let optionsTest = {
   dataLabels: {
     enabled: false
   }
-}
-
-function updateDonut() {
-  // console.log('fire updateDonut');
-  // console.log(opt);
-  apexChart = new ApexCharts(document.querySelector('#donut'), opt);
-  apexChart.render();
 }
