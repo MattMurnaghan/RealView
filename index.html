@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,8 +10,14 @@
     <link rel="stylesheet" href="assets/css/index.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&family=IBM+Plex+Sans+Condensed&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&family=IBM+Plex+Sans+Condensed&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
+
     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css"> -->
 
 
@@ -20,77 +27,105 @@
     <!-- <script src="https://www.jsdelivr.com/package/npm/binance-api"></script> -->
     <title>Homepage</title>
 </head>
+
 <body>
     <div id="container" class="container">
-    <header id="header" class="header">
-        <div id="logo" class="logo">
-            RealView
-        </div>
-        <nav id="navigation" class="navigation">
-            <ul id="page-links" class="page-links">
-                <li><a href="index.html" class="active">Home</a></li>
-                <li><a href="#">Link 1</a></li>
-                <li><a href="#">Link 2</a></li>
-                <li><a href="#">Link 3</a></li>
-            </ul>
-        </nav>
-        <button type="button" id="burger-menu" class="btn btn-primary" >
-            <i class="fa-solid fa-bars"></i>
-        </button>
-    </header>
-    <section id="main-chart" class="section">
-        <div id="chart-container__main-chart" class="chart-container"></div>
-    </section>
-    <section id="select-market" class="select-market">
-
-        <div id="select-market__button-holder" class="button-holder">
-            <!-- on-click => change html of coin-pair and request data from the binance api to repopulate chart -->
-            <button type="button" id="select-market__button" class="btn btn-primary">
-                COIN PAIR
-            </button>
-            <div id="seclect-market__display-pair" class="coin-pair">
-                BTC/USDT
+        <header id="header" class="header">
+            <div id="logo" class="logo">
+                <a href="index.html">RealView</a>
             </div>
+            <nav id="navigation" class="navigation">
+                <ul id="page-links" class="page-links">
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="https://www.binance.com/en">Binance</a></li>
+                    <li><a href="https://data.binance.vision/?prefix=">Historical Data</a></li>
+                    <li><a href="#">Contact us</a></li>
+                </ul>
+            </nav>
+            <button type="button" id="burger-menu" class="btn btn-primary">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </header>
+
+
+        <div id="section-holder" class="section-holder">
+            <section id="main-chart" class="section">
+                <div id="coin-price-comparison__title" class="title-block">
+                    <h2>K-Line charts</h2>
+                </div>
+                <div id="chart-container__main-chart" class="chart-container"></div>
+                <div id="select-market" class="select-market">
+                    <div id="select-market__button-holder" class="button-holder">
+                        <div class="dropdown">
+                            <div class="select">
+                                <span class="selected">JAN</span>
+                                <div class="caret"></div>
+                            </div>
+                            <ul id="menu" class="menu">
+                                <li>FEB</li>
+                                <li>MAR</li>
+                                <li>APR</li>
+                                <li>MAY</li>
+                                <li>JUN</li>
+                                <li>JUL</li>
+                                <li>AUG</li>
+                                <li>SEP</li>
+                                <li>OCT</li>
+                                <li>NOV</li>
+                                <li>DEC</li>
+                            </ul>
+                        </div>
+                        <div id="seclect-market__display-pair" class="coin-pair">
+                            BTC/USDT
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="coin-price-comparison" class="section">
+                <div id="coin-price-comparison__title" class="title-block">
+                    <h2>Coin Price Comparison</h2>
+                </div>
+                <div id="coins-prices" class="donut-chart-container">
+                    <div id="donut" class="donut"></div>
+                </div>
+                <div class="select-trade-pair">
+                    <div id="coins-prices__button-holder" class="trade-options">
+                        <!-- on-click => change html of coin-pair and request data from the binance api to repopulate chart -->
+                        <button type="button" id="trade-options__btc" class="btn btn-primary trade-options__button">BTC</button>
+                        <button type="button" id="trade-options__eth" class="btn btn-primary trade-options__button">ETH</button>
+                        <button type="button" id="trade-options__ada" class="btn btn-primary trade-options__button">ADA</button>
+                        <button type="button" id="trade-options__dot" class="btn btn-primary trade-options__button">DOT</button>
+                        <button type="button" id="trade-options__ltc" class="btn btn-primary trade-options__button">LTC</button>
+                        <button type="button" id="trade-options__sol" class="btn btn-primary trade-options__button">SOL</button>
+                    </div>
+                </div>
+            </section>
         </div>
-    </section>
 
-    <div id="coins-prices" class="donut-chart-container">
-        <div id="donut" class="donut"></div>
-        
+        <footer id="footer" class="footer">
+            <ul class="social-networks">
+                <li><a href="http://facebook.com" target="_blank" rel="noopener"
+                        aria-label="Visit our facebook page (opens in a new tab)"><i class="fab fa-facebook"></i></a>
+                </li>
+                <li><a href="http://twitter.com" target="_blank" rel="noopener"
+                        aria-label="Visit our twitter page (opens in a new tab)"><i
+                            class="fab fa-twitter-square"></i></a>
+                </li>
+                <li><a href="http://youtube.com" target="_blank" rel="noopener"
+                        aria-label="Visit our youtube page (opens in a new tab)"><i
+                            class="fab fa-youtube-square"></i></a>
+                </li>
+                <li><a href="http://instagram.com" target="_blank" rel="noopener"
+                        aria-label="Visit our instagram page (opens in a new tab)"><i class="fab fa-instagram"></i></a>
+                </li>
+            </ul>
+        </footer>
     </div>
-
-    <section class="select-trade-pair">
-        <div id="coins-prices__button-holder" class="trade-options">
-            <!-- on-click => change html of coin-pair and request data from the binance api to repopulate chart -->
-            <button type="button" id="trade-options__btc" class="btn btn-primary trade-options__button">BTC</button>
-            <button type="button" id="trade-options__eth" class="btn btn-primary trade-options__button">ETH</button>
-            <button type="button" id="trade-options__ada" class="btn btn-primary trade-options__button">ADA</button>
-            <button type="button" id="trade-options__dot" class="btn btn-primary trade-options__button">DOT</button>
-            <button type="button" id="trade-options__ltc" class="btn btn-primary trade-options__button">LTC</button>
-            <button type="button" id="trade-options__sol" class="btn btn-primary trade-options__button">SOL</button>
-        </div>
-    </section>
-
-    <!-- <div id="lorem">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eius ducimus accusantium officiis odit esse fuga nemo dignissimos commodi alias, tempore similique modi ipsam quam labore voluptates voluptas praesentium velit excepturi, laborum debitis repudiandae aperiam. Officiis, enim fugit! Error minima doloribus dolorum rem dignissimos. Porro hic aliquam ex adipisci saepe totam, modi minus voluptates molestiae? Nulla, optio ullam. Eligendi, labore! Incidunt consequuntur totam molestias, impedit ducimus voluptate cum neque veniam ipsum iure ex animi ratione pariatur, labore vel accusantium fugit accusamus id provident quam laboriosam, quisquam tenetur dolorum. Earum quae iusto delectus similique officia sequi iure eos dignissimos illo repudiandae totam ut laborum odio, molestias distinctio neque officiis optio tempora velit doloribus blanditiis. Voluptates, exercitationem veniam aliquid a hic iure qui distinctio cupiditate possimus fugiat iste quidem ea labore deleniti repellat adipisci obcaecati quaerat sunt beatae suscipit necessitatibus minus? Alias suscipit blanditiis beatae iste laborum? Doloremque dolores necessitatibus voluptatem consequatur odio blanditiis quisquam nostrum assumenda repudiandae similique dolorum error facere possimus provident porro, aut sunt beatae! Optio delectus quo esse dolorem maiores quidem neque voluptas recusandae explicabo animi veniam, dolores corrupti officiis ad impedit asperiores magnam sequi officia accusantium modi. Quia necessitatibus, saepe est accusantium similique facilis corporis veritatis reiciendis ab vitae. Nulla aliquam perferendis distinctio quae quisquam accusamus ut veniam quibusdam hic ipsa ullam excepturi nam, quos suscipit necessitatibus possimus dolor, voluptatibus dolorem. Temporibus iusto et ut officiis saepe repellat adipisci odio odit placeat neque, quam deserunt! Ipsum earum ducimus nisi omnis error autem eveniet necessitatibus, tenetur officia vero nihil soluta sequi voluptatem fugiat deleniti temporibus minima modi nobis optio atque, ullam voluptates. Qui porro impedit excepturi corporis eveniet, quasi vel voluptas harum nihil magni. Ab, repellat, at voluptates animi aut facilis minima, quis corrupti ipsum ea eum esse illum fuga! Magni tempore repellat distinctio aspernatur neque earum numquam sapiente, similique molestias minus tempora amet quasi vero veritatis voluptates optio iusto, quos sint dolor porro ipsum sed? Laudantium quam quis exercitationem error nemo dignissimos assumenda excepturi necessitatibus ipsa hic fugiat illo iste neque ut maxime, facere dolorum, praesentium, possimus alias odit est perferendis expedita modi nulla. Inventore quod consequatur ex fugit sequi itaque sunt. Sunt molestiae voluptatibus quibusdam ducimus recusandae expedita, excepturi id magnam qui maxime animi minima nesciunt quia vel, praesentium quaerat quae exercitationem alias eos. Animi quo magni similique tempora, quibusdam ipsa quisquam fuga repellendus maiores dolore culpa obcaecati labore quas, ipsum doloribus, asperiores facilis cum illo! Maxime modi at ipsum officia iure ea blanditiis impedit nam. Ex deserunt dolorum molestias porro nesciunt aspernatur doloribus dolores dolor adipisci, ipsum molestiae architecto quisquam laboriosam repellat id? Est alias neque tempora dicta asperiores itaque nisi ipsa maxime dignissimos vero voluptatem impedit, beatae nostrum veniam, molestias esse! Corporis, ipsa doloribus quae ratione consequuntur itaque ipsam quia aliquam suscipit fugit eaque, nisi adipisci a iste hic assumenda nesciunt tenetur, harum excepturi deleniti. Expedita officia delectus repellendus ullam quibusdam, quisquam ex corporis dolorum quo id aperiam. Amet, velit nulla quos modi veniam voluptatem excepturi aut, placeat aliquam necessitatibus at explicabo, qui ex fuga!</div> -->
-    <footer id="footer" class="footer">
-        <ul class="social-networks">
-            <li><a href="http://facebook.com" target="_blank" rel="noopener"
-                    aria-label="Visit our facebook page (opens in a new tab)"><i class="fab fa-facebook"></i></a></li>
-            <li><a href="http://twitter.com" target="_blank" rel="noopener"
-                    aria-label="Visit our twitter page (opens in a new tab)"><i class="fab fa-twitter-square"></i></a>
-            </li>
-            <li><a href="http://youtube.com" target="_blank" rel="noopener"
-                    aria-label="Visit our youtube page (opens in a new tab)"><i class="fab fa-youtube-square"></i></a>
-            </li>
-            <li><a href="http://instagram.com" target="_blank" rel="noopener"
-                    aria-label="Visit our instagram page (opens in a new tab)"><i class="fab fa-instagram"></i></a></li>
-        </ul>
-    </footer>
-    </div>
-    <script src="assets/js/chart.js"></script>
+    <script type="module" src="assets/js/chart.js"></script>
     <script type="module" src="index.js"></script>
     <script src="https://kit.fontawesome.com/33033cbf37.js" crossorigin="anonymous"></script>
 
 </body>
-</html> 
 
+</html>
