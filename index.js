@@ -82,6 +82,20 @@ let dot_trade_button = document.querySelector('#trade-options__dot');
 let ltc_trade_button = document.querySelector('#trade-options__ltc');
 let sol_trade_button = document.querySelector('#trade-options__sol');
 
+let update_price_button = document.querySelector('#update-price');
+
+update_price_button.addEventListener('click', () => {
+    trade_donut.updateSeries(); 
+    btc_trade_button.classList.remove('clicked');
+    dot_trade_button.classList.remove('clicked');
+    eth_trade_button.classList.remove('clicked');
+    ada_trade_button.classList.remove('clicked');
+    ltc_trade_button.classList.remove('clicked');
+    sol_trade_button.classList.remove('clicked');
+
+    trade_donut.renderDonut();
+});
+
 btc_trade_button.addEventListener('click', () => {
     btc_trade_button.classList.toggle('clicked');
     trade_donut.toggleLabels('BTC');

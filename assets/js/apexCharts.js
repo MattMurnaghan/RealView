@@ -60,16 +60,14 @@ export class Donut {
     console.log('in update series');
     let obj;
     let labels = this.labels;
+    this.show_values.fill(true);
 
     for (let i = 0; i < sessionStorage.length; i++) {
       obj = JSON.parse(sessionStorage.getItem(labels[i].toLowerCase()));
       this.series[i] = parseFloat(obj.price);
     }
-    console.log('assign series index to series')
-    // this.series = this.series_index.slice();
-    console.log(this.labels);
-    // console.log(this.series_index);
-    console.log(this.series)
+    this.disp_labels = this.labels.slice();
+    this.disp_series = this.series.slice();
   }
 
   // 

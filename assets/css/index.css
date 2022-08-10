@@ -31,6 +31,7 @@ p {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin: 0 20px;
 }
 
 header > i {
@@ -87,6 +88,7 @@ header > i {
 .chart-container,
 .donut-chart-container {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 320px;
@@ -98,6 +100,10 @@ header > i {
 
     box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.25);
     border: 1px solid #8080807d;
+}
+
+#update-price {
+    margin-top: 20px;
 }
 
 /* Market selector */
@@ -188,7 +194,6 @@ header > i {
     display: none;
     transition: 0.2s;
     position: absolute;
-    z-index: 5;
 }
 
 #menu.menu-open {
@@ -265,6 +270,9 @@ header > i {
     color: #007bff;
 }
 
+.description {
+    width: 360px;
+}
 
 /* Footer */
 
@@ -277,6 +285,7 @@ header > i {
     height: 60px;
     align-items: center;
     justify-content: space-evenly;
+    z-index: 3;
 }
 
 .social-networks {
@@ -313,7 +322,8 @@ header > i {
     .section-holder {
         display: flex;
         flex-direction: column;
-        align-items: center;
+        /* align-items: center; */
+        /* width: 768px; */
     }
 
     .navigation{
