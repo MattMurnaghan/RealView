@@ -44,68 +44,55 @@ ltc_socket.monitorSocket();
 ada_socket.monitorSocket();
 sol_socket.monitorSocket();
 
-// const myfunc1 = (socket) => {
-//     closeBinanceSocket(socket);
-//     console.log('socket closed');
-// }
-
-console.log('start waiting');
-
-// donut chart
-// let type = 'donut';
-// let series = [ 0, 0, 0, 0, 0, 0];
 let labels = ['BTC', 'ETH', 'ADA', 'DOT', 'LTC', 'SOL'];
 
 let trade_donut = new Donut(labels);
 
 trade_donut.updateSeries(); 
-// trade_donut.getLabels();
 trade_donut.renderDonut();
 
-// console.log('after toggle')
-// trade_donut.toggleLabels('BTC');
+let btc_trade_button = document.querySelector('#trade-options__btc');
+let eth_trade_button = document.querySelector('#trade-options__eth');
+let ada_trade_button = document.querySelector('#trade-options__ada');
+let dot_trade_button = document.querySelector('#trade-options__dot');
+let ltc_trade_button = document.querySelector('#trade-options__ltc');
+let sol_trade_button = document.querySelector('#trade-options__sol');
 
-// trade_donut.renderDonut();
-
-document.querySelector('#trade-options__btc').addEventListener('click', () => {
+btc_trade_button.addEventListener('click', () => {
+    btc_trade_button.classList.toggle('clicked');
     trade_donut.toggleLabels('BTC');
     trade_donut.renderDonut();
 });
 
-document.querySelector('#trade-options__eth').addEventListener('click', () => {
+eth_trade_button.addEventListener('click', () => {
+    eth_trade_button.classList.toggle('clicked');
     trade_donut.toggleLabels('ETH');
     trade_donut.renderDonut();
 });
 
-document.querySelector('#trade-options__ada').addEventListener('click', () => {
+ada_trade_button.addEventListener('click', () => {
+    ada_trade_button.classList.toggle('clicked');
     trade_donut.toggleLabels('ADA');
     trade_donut.renderDonut();
 });
 
-document.querySelector('#trade-options__dot').addEventListener('click', () => {
+dot_trade_button.addEventListener('click', () => {
+    dot_trade_button.classList.toggle('clicked');
     trade_donut.toggleLabels('DOT');
     trade_donut.renderDonut();
 });
 
-document.querySelector('#trade-options__ltc').addEventListener('click', () => {
+ltc_trade_button.addEventListener('click', () => {
+    ltc_trade_button.classList.toggle('clicked');
     trade_donut.toggleLabels('LTC');
     trade_donut.renderDonut();
 });
 
-document.querySelector('#trade-options__sol').addEventListener('click', () => {
+sol_trade_button.addEventListener('click', () => {
+    sol_trade_button.classList.toggle('clicked');
     trade_donut.toggleLabels('SOL');
     trade_donut.renderDonut();
 });
-
-
-// setInterval(() => {
-//     console.log(opt.series);
-// }, 3000);
-
-
-// setInterval(() => {
-//     console.log(opt.series)
-// }, 3000)
 
 
 

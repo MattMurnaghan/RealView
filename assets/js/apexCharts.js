@@ -1,62 +1,47 @@
 export class Options {
-  constructor(type, series, labels, enabled){
-    this.chart = {'type': type};
+  constructor(type, series, labels, enabled) {
+    this.chart = {
+      'type': type
+    };
     this.series = series;
     this.labels = labels;
-    this.dataLabels = {'enabled': enabled};
+    this.dataLabels = {
+      'enabled': enabled
+    };
   }
 };
 
 export class Donut {
-  constructor(labels){
+  constructor(labels) {
     this.chart = 'donut';
-
-    // this.series_index = [1, 1, 1, 1, 1, 1]; // record of last updated prices 
-    this.series = [1, 1, 1, 1, 1, 1]; // prices to be displated 
-
+    this.series = Array(labels.length); // prices to be displated 
     this.disp_series = Array(labels.length);
-
-    // this.labels_index = labels;  // original copy of labels for keeping track of label position
-    this.labels = labels;       // the working copy of the labels that can be toggled by the user
-
+    this.labels = labels; // the working copy of the labels that can be toggled by the user
     this.disp_labels = Array(labels.length);
-
     this.show_values = Array(labels.length).fill(true);
-
-
-
-    this.data_labels = false;   // toggle status of data labels
-
-    this.renderedChart = null;  // hold the rendered chart object
-    this.first_render = true;  // checks to see if a chart object has already been rendered
+    this.data_labels = false; // toggle status of data labels
+    this.renderedChart = null; // hold the rendered chart object
+    this.first_render = true; // checks to see if a chart object has already been rendered
   }
 
 
 
-  toggleLabels(toggle){
+  toggleLabels(toggle) {
     let toggle_index = this.labels.indexOf(toggle);
-    if(this.show_values.at(toggle_index) === true){
+    if (this.show_values.at(toggle_index) === true) {
       this.show_values[toggle_index] = false;
-    }else if(this.show_values.at(this.labels.indexOf(toggle)) === false){
+    } else if (this.show_values.at(this.labels.indexOf(toggle)) === false) {
       this.show_values[toggle_index] = true;
     }
-
     let i = 0;
-
     for (i = 0; i < this.show_values.length; i++) {
-      // console.log(i);
-      // console.log(this.show_values.at(i))
-
-      if(this.show_values[i] === true){
+      if (this.show_values[i] === true) {
         this.disp_labels[i] = this.labels.at(i);
         this.disp_series[i] = this.series.at(i);
-        // count++;
-      }else{
+      } else {
         this.disp_labels[i] = null;
         this.disp_series[i] = null;
       }
-      // console.log(this.disp_labels);
-      // console.log(this.disp_series);
     }
 
     this.disp_labels = this.disp_labels.filter(element => {
@@ -71,12 +56,12 @@ export class Donut {
   }
 
   // update the series of the donut object
-  updateSeries(){
+  updateSeries() {
     console.log('in update series');
     let obj;
     let labels = this.labels;
 
-    for(let i=0; i < sessionStorage.length; i++){
+    for (let i = 0; i < sessionStorage.length; i++) {
       obj = JSON.parse(sessionStorage.getItem(labels[i].toLowerCase()));
       this.series[i] = parseFloat(obj.price);
     }
@@ -87,37 +72,37 @@ export class Donut {
     console.log(this.series)
   }
 
-// 
-  getLabels(){
+  // 
+  getLabels() {
     console.log('in getLabels')
     console.log(this.labels);
     return this.labels;
   }
 
-// toggle datalabels on or off
+  // toggle datalabels on or off
 
-  toggleDataLabels(){
+  toggleDataLabels() {
     let enabled = this.data_labels;
-    if(enabled) {
+    if (enabled) {
       enabled = false
-    }else{
-      enabled =true;
+    } else {
+      enabled = true;
     }
     this.data_labels = enabled;
   }
 
-// Render the donut chart using the apexCharts library
-  renderDonut(){
+  // Render the donut chart using the apexCharts library
+  renderDonut() {
     console.log('in render donut');
 
     // console.log(opt)
 
-    if(this.first_render){
+    if (this.first_render) {
       let opt = new Options(this.chart, this.series, this.labels, this.data_labels);
       this.renderedChart = new ApexCharts(document.querySelector('#donut'), opt);
       this.renderedChart.render();
       this.first_render = false;
-    }else{
+    } else {
       let opt = new Options(this.chart, this.disp_series, this.disp_labels, this.data_labels);
       this.renderedChart.updateOptions(opt);
     }
@@ -128,18 +113,18 @@ export class Donut {
 
 
 export let optionsTest = {
-	chart: {
-	  type: 'donut'
-	},
-	series: [ 20000, 1400, 500, 200],
+  chart: {
+    type: 'donut'
+  },
+  series: [20000, 1400, 500, 200],
   labels: ['BTC', 'ETH', 'TEST1', 'TEST2'],
 
   dataLabels: {
-      enabled: false
+    enabled: false
   }
 }
 
-function updateDonut(){
+function updateDonut() {
   // console.log('fire updateDonut');
   // console.log(opt);
   apexChart = new ApexCharts(document.querySelector('#donut'), opt);

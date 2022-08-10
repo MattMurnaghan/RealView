@@ -46,7 +46,7 @@ header > i {
     color: rgb(57, 136, 255);
     background-color: #fff;
     box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.25);
-    border: 1px solid rgb(255, 255, 255);
+    border: 1px solid #8080807d;
 }
 
 .logo {
@@ -78,7 +78,8 @@ header > i {
     margin: 0 20px;
 }
 
-.chart-container {
+.chart-container,
+.donut-chart-container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -90,7 +91,7 @@ header > i {
 
 
     box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.25);
-    border: 1px solid transparent;
+    border: 1px solid #8080807d;
 }
 
 /* Market selector */
@@ -103,7 +104,7 @@ header > i {
     border-radius: 15px;
     
     box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.25);
-    border: 1px solid transparent;
+    border: 1px solid #8080807d;
 }
 
 .button-holder {
@@ -121,7 +122,7 @@ header > i {
     border-radius: 15px;
     
     box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.25);
-    border: 1px solid transparent;
+    border: 1px solid #8080807d;
 }
 
 #select-market__button {
@@ -142,7 +143,25 @@ header > i {
     margin: 10px 10px;
 }
 
-#trade-options__btc{
+:is(#trade-options__btc,
+    #trade-options__eth,
+    #trade-options__ada,
+    #trade-options__dot,
+    #trade-options__ltc,
+    #trade-options__sol){
+        font-weight: 500;
+    }
+
+:is(#trade-options__btc,
+    #trade-options__eth,
+    #trade-options__ada,
+    #trade-options__dot,
+    #trade-options__ltc,
+    #trade-options__sol).clicked{
+    background-color: white;
+    color: #007bff;
+}
+/* #trade-options__btc{
     background-color: #ffd966;
     border-color: #ffd966;
 }
@@ -170,7 +189,7 @@ header > i {
 #trade-options__sol{
     background-color: #9e008f;
     border-color: #9e008f;
-}
+} */
 
 /* Footer */
 

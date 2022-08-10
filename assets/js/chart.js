@@ -4,7 +4,7 @@ const chart = LightweightCharts.createChart(document.querySelector('#chart-conta
   	height: 300,
 	layout: {
 		backgroundColor: '#fff',
-		textColor: 'rgba(57, 136, 255, 0.9)',
+		textColor: 'rgba(57, 83, 255, 1)',
 	},
 	grid: {
 		vertLines: {

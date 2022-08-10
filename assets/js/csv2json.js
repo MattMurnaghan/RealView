@@ -46,12 +46,20 @@ const stringToKlineObj = (arr) => {
   };
   // loops through the passed array argument to create a kline object 
   let i = 0;
+
+  // console.log('arr')
+  // console.log(arr)
   for (const key in kline) {
-      if (kline.hasOwnProperty(key)) {
-          kline[key] = parseFloat(arr[i])
-      };
+      // if (kline.hasOwnProperty(key)) {
+      //   console.log(key)
+      //   kline[key] = parseFloat(arr[i])
+      // };
+      // console.log(parseFloat(arr[i]));
+      kline[key] = parseFloat(arr[i]);
   i++;
   };
+  // console.log(kline)
+
   kline.openTime = unixTimeStampToDateTime(kline.openTime);
   kline.closeTime = unixTimeStampToDateTime(kline.closeTime);
   return kline;
@@ -59,23 +67,68 @@ const stringToKlineObj = (arr) => {
 
 //TODO I think that returning an array of kline objects is the right call here, check this with guido
 // Reads a CSV file from https://data.binance.vision/?prefix=data/spot/ and returns an array of kline csv strings
-const readKlineCsv = (file) => {
+async function readKlineCsv (file) {
   let arr = syncReadFile(file);
-  let klineStringArray = arr[1].split(',');
-  return klineStringArray;
+
+  let kline_string_array = Array.apply(arr.length);
+  
+  let i = 0;
+  for(i=0; i < arr.length; i++){
+    kline_string_array[i]= arr[i].split(',');
+  }
+
+  // console.log(kline_string_array[1]);
+  return kline_string_array;
 }
 
 // reads a file path to a csv document as the argument and converts the file first to an array of csv strings
 // it then converts the string array to an array of objects each holding a kline object to be read by the apex charts node module 
-const klineObjFromCsv = (file) => {
-  let klineStringArray = readKlineCsv(file);
-  let klineObj = stringToKlineObj(klineStringArray);
-  return klineObj;
+async function klineObjFromCsv (file) {
+  let kline_string_array = await readKlineCsv(file);
+  let kline_obj_array = Array(kline_string_array.length);
+  let i = 0;
+  // console.log('first entry')
+  // console.log(kline_string_array[0])
+
+  for(i=0; i < kline_string_array.length; i++){
+    // console.log(i);
+    // console.log(stringToKlineObj(kline_string_array[i]));
+    kline_obj_array[i] = stringToKlineObj(kline_string_array[i]);
+  }
+
+  // for(const kline_string in kline_string_array){
+  //   console.log('kline string')
+  //   console.log(kline_string[i]);
+  //   console.log('passing to stringToKlineObj')
+  //   kline_obj_array[i] = stringToKlineObj(kline_string[i]);
+  //   i++;
+  // }
+  console.log(kline_obj_array)
+  // let klineObj = stringToKlineObj(klineStringArray);
+  return kline_obj_array;
 }
 
 let file = 'assets/csv/binance_data/1h/BTCUSDT-1h-2021-01.csv';
-let klineObj = klineObjFromCsv(file);
-console.log('kline obj = ', klineObj)
+
+readKlineCsv(file);
+klineObjFromCsv(file);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// let klineObj = klineObjFromCsv(file);
+// console.log('kline obj = ', klineObj)
 
 // asynchronous function that reads through the files in a directory and returns an array of the file names
 async function readFilesInDirectory(rootPath) {
@@ -87,16 +140,27 @@ async function readFilesInDirectory(rootPath) {
 }
 
 let rootPath = 'assets/csv/binance_data/1h';
-readFilesInDirectory(rootPath).then((result) => {
-  console.log(result)
-});
+
+// readFilesInDirectory(rootPath).then((result) => {
+//   console.log(result)
+// });
 
 // This function takes a directory as the argument and loops through the directory, reading each csv file and returning an 
 // array of kline objects for each file
-const getCandleStickData = (pathToCsvFiles) => {
+const getCandleStickData = (path_to_csv_files) => {
   let klines = [];
+  let files;
   //get file names
-  readFilesInDirectory(rootPath).then((result) => {
-    console.log(result)
-  });
+  readFilesInDirectory(path_to_csv_files).then((result) => {
+    // console.log(result);
+    files = result;
+
+  }).then(() =>{
+    files.forEach(element => {
+      console.log(klineObjFromCsv(`${path_to_csv_files}/${element}`));
+    });
+  })
+
 }
+
+// getCandleStickData(rootPath);
