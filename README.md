@@ -1,5 +1,8 @@
 # **RealView**
 A tool for visualizing real-time financial data from different sources.
+[Website link here](https://mattmurnaghan.github.io/RealView/)
+
+![am I responsive](docs/images/am_i_responsive.png)
 ## **Learning outcomes**
 * Learn how to capture real-time data from the Binance API
 * Learn how to display data using javascript libraries
@@ -7,18 +10,100 @@ A tool for visualizing real-time financial data from different sources.
 * Change the display type (line charts vs candlestick charts)
 * Create a pie chart showing the price relationships between different currencies
 
+## Site Layout:
+---
+This is a single-page site consisting of two main features:
+* K-Line or candlestick chart viewing
+* Donut chart presentation of live trade prices from Binance. 
+
+## User Goals
+---
+This site is focused on demonstrating simple data manipulation techniques for those who already have an interest in cryptocurrency and finance. 
+
+### First-time visitors
+1. I want to see data easily displayed for some of the most popular cryptocurrencies.
+2. I want to be able to choose which currencies are displayed and have live updates.
+3. I want to be able to see the previous history of popular cryptocurrencies.
+
+## User Journey
+---
+The user journey for this site is quite small, as it is focused mainly on demonstration and data manipulation.
+
+On the desktop version of the site, no scrolling is required to see all of the site features.
+
+### **Kline Chart**
+To show off the historical data from the Binance website, I chose to use a package called lightweight charts. It was created by [trading view](https://www.tradingview.com/). The version that I employed was a free version of the software, but it served its purpose well enough to display the data that I was interested in.
+
+Initially, I had planned to make use of the Binance API to stream live data into the chart, however, I found this to be very difficult to achieve without running a separate server. I decided to instead download some free CSV data from the Binance historical data resourses. 
+
+Once I stored the data in the assets folder, I wrote an offline file called csv2json.js, which I used to parse the data as JSON and filter the information that I needed to match the schema accepted by the lightweight charts package.
+
+the csv2Json file makes use of the npm fs libraries, allowing me to read and write data asynchronously. When running the csv2json file, a root_path variable is passed to a set of functions, pointing towards the directory where the CSV files are stored and writing back to the same directory with updated JSON files.
+
+Following this, I intended to create a set of event listeners that would handle requests from the user and change the coin pair and time period displayed.
+
+Unfortunately, I was unable to complete this feature, only getting to implement the January dataset for the BTC/USDT pair. But, with some further development, this feature is easily attainable.
+
+Show below is a screenshot of the feature, demonstrating the lightweight charts candlestick tool. It allows for precise price analysis and the user's ability to zoom and scroll. It automatically re-sizes the scales at the size depending on the level of zoom applied.
+
+
+
+|![k-line charts](docs/images/k-line_chart.png)|
+|:--:|
+| <strong>K-Line chart by Lightweight charts</strong>  |
+
+### **Live Trade Price - Donut chart**
+I chose to display some live trade info by streaming from the Binance sockets using the built-in javascript WebSocket class. I used two separate JS files, imported into index.JS (main) using ES6 module notation.
+
+I implemented a BinanceSocketManager class in a separate JS file, [binance_socket.js](assets/js/binance_socket.js). 
+
+The class has four properties:
+* socket_addr
+* name
+* socket
+* price_data
+
+I originally had intended to use the price data property to return a price data payload to the main index.js file, but settled on making use of the sessionStorage property.
+
+I chose to use session storage as I knew that the memory required by the payload was very small and was overwritten on every request of new data, so performance issues were not a problem. It also made accessing the data from the sockets very easy to do from the second integral file, [apexCharts.js](assets/js/apexCharts.js).
+
+In the main file, 6 BinanceSocketManager objects are instantiated using the mentioned class. They are opened using the socket addresses provided as a static resource within the file.
+
+An onmessage event is then called on each websocket using the monitorSocket() method, which updates the sessionstorage on every new message to the socket. 
+
+Following this, a new instance of the Donut class is instantiated in the main JS file. This class makes use of the [apexCharts](https://apexcharts.com/) library.
+
+One single donut class is invoked in the main, taking a static array of coin names as a parameter to the constructor. 
+
+The series to be displayed is updated through the updateSeries() method, which is tied to the update price button with an event listener.
+
+There are also a series of buttons underneath the donut chart, instructing the user to toggle on and off the coins that they are looking to review.
+
+
+|![donut chart btc included](docs/images/coin_price_comparison_btc_inc.png)|
+|:--:|
+| <strong>Donut chart showing large price coins</strong>|
+
+|![donut chart btc and eth excluded](docs/images/coin_price_comparison_btc_and_eth_excluded.png)|
+|:--:|
+| <strong>Donut chart showing the toggle feature for viewing individual trade prices</strong>|
+
+
+
+
 ## **Node package manager (npm)**
-I am planning on using npm to manage my dependencies and packages for this project. 
+I initially planned on using npm to manage some of my dependencies and packages for this project. 
 Npm is an industry-standard technology required to install different node packages. Node packages are written in the Node environment built on the V8 Javascript runtime environment created by google.
+
+
 
 ## **Node Modules**
 The list of node modules I used in this project is shown below:
-* [Jquery](https://jquery.com/)
-    - For manipulating the DOM
-* [wscat](https://www.npmjs.com/package/wscat)
+
+* [fs promises](https://nodejs.org/dist/latest-v10.x/docs/api/fs.html)
     - For connecting to WebSockets and streaming data from the Binance API
-* [Lightweight charts](https://www.tradingview.com/lightweight-charts/)
-    - For displaying financial information in chart form 
+
+I didn't use many as the code was predominantly client side, however, I did make use of the fs libraries for parsing the CSV data that I retrieved from the Binance servers.
 
 ## **The Binance API**
 I used the Binance API to connect to their official WebSocket stream. This allowed me to capture live data about the Binance marketplace.
@@ -84,6 +169,8 @@ This will output a candlestick stream of trade data, including the opening price
         }
 
 This kind of data is used to create candlestick charts, specifically used to carry out a detailed analysis of financial markets during trade hours over a given time interval.
+
+
 ## **References**
 
 [Box shadows](https://www.youtube.com/watch?v=Yon4l3MUBGY)

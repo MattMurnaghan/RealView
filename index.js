@@ -10,34 +10,11 @@ import { openCoinPairs, openBurger } from './assets/js/ui.js';
 import { socket_addresses, BinanceSocketManager } from './assets/js/binance_socket.js';
 
 // import statements for apex charts
-import { Options, Donut } from './assets/js/apexCharts.js';
+import { Donut } from './assets/js/apexCharts.js';
 
 document.querySelector('#burger-menu').addEventListener('click', openBurger);
 // document.querySelector('#select-market__button').addEventListener('click', openCoinPairs);
 
-// const dropdowns = document.querySelectorAll('.dropdown');
-
-// dropdowns.forEach(dropdown => {
-//     const select = dropdown.querySelector('.select');
-//     const caret = dropdown.querySelector('.caret');
-//     const menu = dropdown.querySelector('.menu');
-//     const options = dropdown.querySelector('.menu li');
-//     const selected = dropdown.querySelector('.selected');
-
-//     select.addEventListener('click', () => {
-//         select.classList.toggle('.select-clicked');
-//         caret.classList.toggle('.caret-rotate');
-//         menu.classList.toggle('.menu-open');
-//     });
-
-
-
-//     // options.forEach(option => {
-//     //     option.addEventListener('click', () => {
-//     //         select.innerText = option.innerText;
-//     //     })
-//     // })
-// })
 
 console.log(socket_addresses);
 console.log(socket_addresses.btc);
