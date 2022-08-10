@@ -247,6 +247,8 @@ This kind of data is used to create candlestick charts, specifically used to car
 
 [reading files asynchronously in JS](https://stackoverflow.com/questions/40593875/using-filesystem-in-node-js-with-async-await)
 
+[favicon generator](https://favicon.io/favicon-generator/)
+
 ## Acknowledgments
 ---
 I'd like to give a big thanks to my mentor Guido who advised me to refactor my code using classes instead of multiple exported functions. It simplified the process and is more in line with best practices .
