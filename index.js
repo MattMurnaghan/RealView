@@ -73,6 +73,7 @@ let labels = ['BTC', 'ETH', 'ADA', 'DOT', 'LTC', 'SOL'];
 let trade_donut = new Donut(labels);
 
 trade_donut.updateSeries(); 
+trade_donut.toggleDataLabels();
 trade_donut.renderDonut();
 
 let btc_trade_button = document.querySelector('#trade-options__btc');
